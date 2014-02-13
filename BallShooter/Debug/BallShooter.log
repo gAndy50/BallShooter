@@ -1,0 +1,13 @@
+﻿Build started 2/12/2014 5:25:51 PM.
+     1>Project "C:\Users\Andy\Documents\Visual Studio 2012\Projects\BallShooter\BallShooter\BallShooter.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\Andy\Documents\Libraries\SDL2-devel-2.0.0-VC\SDL2-2.0.0\include" /I"C:\Users\Andy\Documents\Libraries\SDL2_image-devel-2.0.0-VC\SDL2_image-2.0.0\include" /I"C:\Users\Andy\Documents\Libraries\SDL2_mixer-devel-2.0.0-VC\SDL2_mixer-2.0.0\include" /I"C:\Users\Andy\Documents\Libraries\SDL2_ttf-devel-2.0.12-VC\SDL2_ttf-2.0.12\include" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andy\Documents\Visual Studio 2012\Projects\BallShooter\Debug\BallShooter.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Andy\Documents\Libraries\SDL2-devel-2.0.0-VC\SDL2-2.0.0\lib\x86" /LIBPATH:"C:\Users\Andy\Documents\Libraries\SDL2_image-devel-2.0.0-VC\SDL2_image-2.0.0\lib\x86" /LIBPATH:"C:\Users\Andy\Documents\Libraries\SDL2_mixer-devel-2.0.0-VC\SDL2_mixer-2.0.0\lib\x86" /LIBPATH:"C:\Users\Andy\Documents\Libraries\SDL2_ttf-devel-2.0.12-VC\SDL2_ttf-2.0.12\lib\x86" SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib SDL2_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Andy\Documents\Visual Studio 2012\Projects\BallShooter\Debug\BallShooter.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Andy\Documents\Visual Studio 2012\Projects\BallShooter\Debug\BallShooter.lib" /MACHINE:X86 Debug\main.obj
+         BallShooter.vcxproj -> C:\Users\Andy\Documents\Visual Studio 2012\Projects\BallShooter\Debug\BallShooter.exe
+     1>Done Building Project "C:\Users\Andy\Documents\Visual Studio 2012\Projects\BallShooter\BallShooter\BallShooter.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.42
