@@ -1,6 +1,9 @@
 /* Ball Shooter
 Written By Andy Patterson (c) 2013-2014 */
 
+#define PC_VERSION 0
+#define MOBILE_VERSION 1
+
 #include "main.h"
 
 const int MAX_WIDTH = 800;
@@ -27,7 +30,7 @@ TTF_Font* Font = NULL;
 SDL_Event event;
 
 int img_flag = IMG_INIT_PNG;
-int snd_flag = MIX_INIT_OGG;
+int snd_flag = MIX_INIT_OGG | MIX_INIT_FLAC;
 
 Uint32 old_time, current_time;
 float ftime;
@@ -37,6 +40,8 @@ int channels = 2;
 int samp = 4096;
 
 int font_size = 20;
+
+Mix_Chunk* PopSnd;
 
 struct PLAYER
 {
@@ -83,6 +88,9 @@ SDL_Surface* Title;
 SDL_Rect TitleRect;
 SDL_Surface* Points;
 SDL_Rect PointRect;
+
+SDL_Surface* Mobile_Btns[2];
+SDL_Rect Mobile_Btns_Rect[2];
 
 SDL_Point mPoint;
 SDL_Finger mFinger;
@@ -133,6 +141,8 @@ void Init()
 		exit(1);
 	}
 
+	PopSnd = Mix_LoadWAV("punch1.ogg");
+
 	if(TTF_Init() < 0)
 	{
 		exit(1);
@@ -179,6 +189,18 @@ void Init()
 
 	gBall.Pop = IMG_Load("Pop.png");
 	SDL_SetColorKey(gBall.Pop,SDL_TRUE,SDL_MapRGB(gBall.Pop->format,255,255,255));
+
+	Mobile_Btns[0] = IMG_Load("PlayGameBtn.png");
+	Mobile_Btns[1] = IMG_Load("ExitGameBtn.png");
+
+	Mobile_Btns_Rect[0].x = MAX_WIDTH / 2;
+	Mobile_Btns_Rect[0].y = MAX_HEIGHT / 2;
+	Mobile_Btns_Rect[0].w = 0;
+	Mobile_Btns_Rect[0].h = 0;
+	Mobile_Btns_Rect[1].x = MAX_WIDTH / 2;
+	Mobile_Btns_Rect[1].y = MAX_HEIGHT / 4;
+	Mobile_Btns_Rect[1].w = 0;
+	Mobile_Btns_Rect[1].h = 0;
 
 
 	gBall.X_Pos[0] = rand() % MAX_WIDTH / 2;
@@ -327,8 +349,21 @@ void Run()
 				mPoint.x = event.button.x;
 				mPoint.y = event.button.y;
 
+#ifdef MOBILE_VERSION
+				if( (mPoint.x > Mobile_Btns_Rect[0].x) && (mPoint.x < Mobile_Btns_Rect[0].x + Mobile_Btns_Rect[0].w) && (mPoint.y > Mobile_Btns_Rect[0].y) && (mPoint.y < Mobile_Btns_Rect[0].y + Mobile_Btns_Rect[0].h) )
+				{
+					TitleScreen = false;
+					GameScreen = true;
+				}
+				else if( (mPoint.x > Mobile_Btns_Rect[1].x) && (mPoint.x < Mobile_Btns_Rect[1].x + Mobile_Btns_Rect[1].w) && (mPoint.y > Mobile_Btns_Rect[1].y) && (mPoint.y < Mobile_Btns_Rect[1].y + Mobile_Btns_Rect[1].h) )
+				{
+					GameScreen = false;
+				}
+#endif
+
 				if( (mPoint.x > gBall.BallRect[0].x) && (mPoint.x < gBall.BallRect[0].x + gBall.BallRect[0].w) && (mPoint.y > gBall.BallRect[0].y) && (mPoint.y < gBall.BallRect[0].y + gBall.BallRect[0].h) )
 				{
+					Mix_PlayChannel(-1,PopSnd,0);
 					gPlayer.Score += gBall.Points[0];
 					gPlayer.Balls_Popped++;
 					gBall.Popped[0] = true;
@@ -337,6 +372,7 @@ void Run()
 				}
 				else if( (mPoint.x > gBall.BallRect[1].x) && (mPoint.x < gBall.BallRect[1].x + gBall.BallRect[1].w) && (mPoint.y > gBall.BallRect[1].y) && (mPoint.y < gBall.BallRect[1].y + gBall.BallRect[1].h) )
 				{
+					Mix_PlayChannel(-1,PopSnd,0);
 					gPlayer.Score += gBall.Points[1];
 					gPlayer.Balls_Popped++;
 					gBall.Popped[1] = true;
@@ -345,6 +381,7 @@ void Run()
 				}
 				else if( (mPoint.x > gBall.BallRect[2].x) && (mPoint.x < gBall.BallRect[2].x + gBall.BallRect[2].w) && (mPoint.y > gBall.BallRect[2].y) && (mPoint.y < gBall.BallRect[2].y + gBall.BallRect[2].h) )
 				{
+					Mix_PlayChannel(-1,PopSnd,0);
 					gPlayer.Score += gBall.Points[2];
 					gPlayer.Balls_Popped++;
 					gBall.Popped[2] = true;
@@ -353,6 +390,7 @@ void Run()
 				}
 				else if( (mPoint.x > gBall.BallRect[3].x) && (mPoint.x < gBall.BallRect[3].x + gBall.BallRect[3].w) && (mPoint.y > gBall.BallRect[3].y) && (mPoint.y < gBall.BallRect[3].y + gBall.BallRect[3].h) )
 				{
+					Mix_PlayChannel(-1,PopSnd,0);
 					gPlayer.Score += gBall.Points[3];
 					gPlayer.Balls_Popped++;
 					gBall.Popped[3] = true;
@@ -573,10 +611,17 @@ void Shutdown()
 		SDL_FreeSurface(gBall.Balls[i]);
 	}
 
+	for(int i = 0; i == 2; i++)
+	{
+		SDL_FreeSurface(Mobile_Btns[i]);
+	}
+
 	SDL_FreeSurface(gPlayer.Point_Text);
 	SDL_FreeSurface(gPlayer.BallPop_Text);
 
 	SDL_FreeSurface(gBall.Pop);
+
+	Mix_FreeChunk(PopSnd);
 
 	Mix_CloseAudio();
 	Mix_Quit();
