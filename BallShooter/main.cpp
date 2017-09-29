@@ -567,31 +567,31 @@ void Draw()
 	{
 		ClearScreen();
 
-		SDL_BlitSurface(gBall.Balls[0],NULL,Surf,&gBall.BallRect[0]);
-		SDL_BlitSurface(gBall.Balls[1],NULL,Surf,&gBall.BallRect[1]);
-		SDL_BlitSurface(gBall.Balls[2],NULL,Surf,&gBall.BallRect[2]);
-		SDL_BlitSurface(gBall.Balls[3],NULL,Surf,&gBall.BallRect[3]);
+		SDL_UpperBlit(gBall.Balls[0],NULL,Surf,&gBall.BallRect[0]);
+		SDL_UpperBlit(gBall.Balls[1],NULL,Surf,&gBall.BallRect[1]);
+		SDL_UpperBlit(gBall.Balls[2],NULL,Surf,&gBall.BallRect[2]);
+		SDL_UpperBlit(gBall.Balls[3],NULL,Surf,&gBall.BallRect[3]);
 
-		SDL_BlitSurface(Points,NULL,Surf,&PointRect);
-		SDL_BlitSurface(gPlayer.Point_Text,NULL,Surf,&gPlayer.Point_Rect);
-		SDL_BlitSurface(gPlayer.BallPop_Text,NULL,Surf,&gPlayer.BallPop_Rect);
-		SDL_BlitSurface(gPlayer.Ball_Txt,NULL,Surf,&gPlayer.BallTxt_Rect);
+		SDL_UpperBlit(Points,NULL,Surf,&PointRect);
+		SDL_UpperBlit(gPlayer.Point_Text,NULL,Surf,&gPlayer.Point_Rect);
+		SDL_UpperBlit(gPlayer.BallPop_Text,NULL,Surf,&gPlayer.BallPop_Rect);
+		SDL_UpperBlit(gPlayer.Ball_Txt,NULL,Surf,&gPlayer.BallTxt_Rect);
 
 		if(gBall.Popped[0] == true && gBall.CurrentFrame[0] == 2)
 		{
-			SDL_BlitSurface(gBall.Pop,NULL,Surf,&gBall.PopRect);
+			SDL_UpperBlit(gBall.Pop,NULL,Surf,&gBall.PopRect);
 		}
 		else if(gBall.Popped[1] == true && gBall.CurrentFrame[1] == 2)
 		{
-			SDL_BlitSurface(gBall.Pop,NULL,Surf,&gBall.PopRect);
+			SDL_UpperBlit(gBall.Pop,NULL,Surf,&gBall.PopRect);
 		}
 		else if(gBall.Popped[2] == true && gBall.CurrentFrame[2] == 2)
 		{
-			SDL_BlitSurface(gBall.Pop,NULL,Surf,&gBall.PopRect);
+			SDL_UpperBlit(gBall.Pop,NULL,Surf,&gBall.PopRect);
 		}
 		else if(gBall.Popped[3] == true && gBall.CurrentFrame[3] == 2)
 		{
-			SDL_BlitSurface(gBall.Pop,NULL,Surf,&gBall.PopRect);
+			SDL_UpperBlit(gBall.Pop,NULL,Surf,&gBall.PopRect);
 		}
 	}
 }
