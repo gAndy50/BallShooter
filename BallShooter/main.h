@@ -1,5 +1,5 @@
 //Ball Shooter Header
-//Andy Patterson (c) 2013-2014
+//Andy Patterson (c) 2013-2017
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
