@@ -105,11 +105,9 @@ BALL gBall;
 int main(int argc, char* argv[])
 {
 	Init();
+	
 	Run();
-
-	//Update();
-	//Draw();
-
+	
 	Shutdown();
 
 	return 0;
