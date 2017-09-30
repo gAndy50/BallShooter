@@ -1,5 +1,5 @@
 /* Ball Shooter
-Written By Andy Patterson (c) 2013-2014 */
+Written By Andy Patterson (c) 2013-2017 */
 
 #define PC_VERSION 0
 #define MOBILE_VERSION 1
