@@ -1,4 +1,4 @@
-Ball Shooter ReadMe/License
+# Ball Shooter ReadMe/License
 
 Ball Shooter is a simple point and click game. The object of the game is to click the bouncing
 balls and rack up points. The game also keeps track of how many balls the user has popped. Ball
