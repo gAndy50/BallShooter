@@ -1,5 +1,5 @@
 /* Ball Shooter
-Written By Andy P. (c) 2013-2019 */
+Written By Andy P. (c) 2013-2022 */
 
 #define PC_VERSION 0
 #define MOBILE_VERSION 1
